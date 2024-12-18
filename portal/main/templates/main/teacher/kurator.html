@@ -1,0 +1,91 @@
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background: #dfe9f5;
+    }
+    .main-course1 {
+        padding: 20px 0;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            font-size: 25px;
+        }
+    .table-wrapper {
+        margin: 10px 0;
+        box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+        overflow-x: auto; /* To make the table responsive */
+    }
+    .fl-table {
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: normal;
+        border: none;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        background-color: white;
+    }
+    .fl-table td, .fl-table th {
+        text-align: center;
+        padding: 8px;
+    }
+    .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 14px;
+    }
+    .fl-table thead th {
+        color: #000;
+        background: #dfe9f5;
+    }
+    .fl-table tr:nth-child(even) {
+        background: #F8F8F8;
+    }
+    .student {
+        width: 100%;
+    }
+</style>
+{% endblock link %}
+
+{% block main %}
+<section class="main-course1">
+    <div class="container">
+        {% for t in tobym %}
+            <h2>{{ t.group.name }}</h2>
+        {% endfor %}
+        {% if students %}
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Аты-жөні </th>
+                        <th>Оқу түрі</th>
+                        <th>Email</th>
+                        <th>Телефон</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in students %}
+                    <tr>
+                        <td><a class="student" href="{% url 'user'  s.id %}">{{ s.first_name }} {{ s.last_name }}</a></td>
+                        <td>{{ s.oku_tury }}</td>
+                        <td>{{ s.email }}</td>
+                        <td>{{ s.telefon }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>Студенттер жоқ</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock main %}

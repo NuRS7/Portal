@@ -1,0 +1,82 @@
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 550px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .profile-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .profile-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 40px;
+        }
+        .profile-container p {
+            font-size: 16px;
+            margin: 5px 0;
+            text-align: left;
+        }
+        .profile-container p strong {
+            color: #333;
+        }
+</style>
+{% endblock link %}
+{% block main %}
+     <section class="main-course1">
+             <div class="profile-container">
+        <h1>{{ users.first_name }} {{ users.last_name }}</h1>
+        {% if users.img %}
+        <img src="{{ users.img.url }}" alt="{{ users.first_name }} {{ users.last_name }}">
+        {% else %}
+        <img src="{% static 'img/images.png' %}" alt="Default Image">
+        {% endif %}
+        <p><strong>Email:</strong> {{ users.email }}</p>
+        <p><strong>Телефон номер:</strong> {{ users.telefon }}</p>
+
+        {% if users.is_student == True %}
+            <p><strong>Курс:</strong> {{ users.kyrs }}</p>
+            <p><strong>Группа:</strong> {{ users.toby }}</p>
+            <p><strong>Оқу түрі:</strong> {{ users.oku_tury }}</p>
+        {% elif users.is_teacher == True %}
+            <p><strong>Дәрежесі:</strong> {{ users.dareje }}</p>
+            <p><strong>Қызметі:</strong> {{ users.kyzmet }}</p>
+            <p><strong>Мен жайлы:</strong> {{ users.about_me }}</p>
+        {% else %}
+        {% endif %}
+        {% if kurator.exists %}
+            <p><strong>Тұрақты мекен-жайы:</strong> {{ users.addres1 }}</p>
+            <p><strong>Қазіргі мекен-жайы:</strong> {{ users.addres2 }}</p>
+            <p><strong>Анасы:</strong> {{ users.ana }}</p>
+            <p><strong>Анасы номер:</strong> {{ users.ana_nomer }}</p>
+            <p><strong>Әкесі:</strong> {{ users.ake }}</p>
+            <p><strong>Әкесі номер:</strong> {{ users.ake_nomer }}</p>
+        {% else %}
+        {% endif %}
+    </div>
+          </section>
+{% endblock main %}
+
+
+
+

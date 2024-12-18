@@ -1,0 +1,122 @@
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+        body{
+            background: #dfe9f5;
+        }
+        .main-course1 {
+            padding: 20px 0;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .back {
+            margin-top: 50px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .back:hover {
+            background-color: #0056b3;
+            transition: .3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #44C3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+.teacher  {
+   width: 100%;
+}
+</style>
+{% endblock link %}
+{% block main %}
+     <section class="main-course1">
+             <div class="container">
+                       <h2>{{ course.name }}</h2>
+
+    {% if grades %}
+        <table class="fl-table">
+            <tr>
+                <th>Оқытушының аты-жөні</th>
+                <th>Апта</th>
+                <th>Баға</th>
+                <th>Бағаланған күн</th>
+            </tr>
+            {% for grade in grades %}
+            <tr>
+                <td><a class="teacher" href="{% url 'user'  grade.teacher.id %}">{{ grade.teacher.first_name }} {{ grade.teacher.last_name }}</a></td>
+                <td>{{ grade.week }}</td>
+                <td>{{ grade.grade }}</td>
+                <td>{{ grade.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Баға жоқ</p>
+    {% endif %}
+
+    <a class="back" href="{% url 'student_sabak' %}">Артқа қайту</a>
+             </div>
+          </section>
+{% endblock main %}
+
+
+
+

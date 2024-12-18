@@ -1,0 +1,140 @@
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+          body{
+        background: #dfe9f5;
+    }
+    .main-course1 {
+        padding: 20px 0;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+    .container {
+            padding: 20px;
+            max-width: 900px;
+            width: 100%;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            font-size: 23px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            width: 50% ;
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back {
+            margin-top: 50px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .back:hover {
+            background-color: #0056b3;
+            transition: .3s;
+            text-decoration: none;
+            color: white;
+        }
+
+    .table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+  .fl-table tr th {
+        color: #000;
+        background: #dfe9f5;
+    }
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+.student {
+   width: 100%;
+}
+</style>
+{% endblock link %}
+
+
+{% block main %}
+<section class="main-course1">
+    <div class="container">
+         {% if courses %}
+            <h2>Сабақтар</h2>
+        <table class="fl-table">
+                {% for course in courses %}
+                 {% if course.sabak_turu.id == 2 %}
+                     <tr>
+                         <td>{{ course.sabak.name }}</td>
+                        <td><a class="student" href="{% url 'course_grades' course.sabak.id %}">Бағаларды көру </a></td>
+                        <td><a class="student" href="{% url 'list_lek' course.toby.id course.sabak.id %}">Лекцияларды көру</a></td>
+
+                    </tr>
+                {% else %}
+                 {% endif %}
+                {% endfor %}
+        </table>
+        {% else %}
+            <p>Сабақтар жоқ</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock main %}
+
+                    {% if courses %}
+                    {% else %}
+                        <p>Сабақтар жоқ</p>
+                    {% endif %}
+
+
+
+

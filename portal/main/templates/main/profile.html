@@ -1,0 +1,110 @@
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+{% load static %}
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Ayu Portal</title>
+      <link rel="stylesheet" href="{% static 'css/style-index1.css' %}">
+      <!-- Font Awesome Cdn Link -->
+      {% block link %}{% endblock link %}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    </head>
+    <body>
+      <div class="container1">
+        <nav class="nav1">
+          <ul>
+            <li>
+                <a href="{% url 'user'  user.id %}" class="logo">
+                    {% if user.img %}
+                        <img src="{{ user.img.url }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                    {% else %}
+                        <img src="{% static 'img/images.png' %}" alt="Default Image">
+                    {% endif %}
+                    <span class="nav-item">{{ user.first_name }} {{ user.last_name }}</span>
+                    <br>
+                    {% if user.is_student == True %}
+                        <p>студент</p>
+                    {% elif user.is_teacher == True %}
+                        <p>оқытушы</p>
+                    {% else %}
+                        <p>админ</p>
+                    {% endif %}
+                </a>
+            </li>
+
+            <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile/' %}active1{% endif %}" >
+              <i class="fas fa-home"></i>
+              <span class="nav-item1 ">Басты бет</span>
+            </a></li>
+
+              {% if user.is_teacher == True %}
+
+            <li><a href="{% url 'lek_pr' %}" class="{% if request.path == '/lek_pr/' %}active1{% endif %}">
+              <i class="fas fa-tasks"></i>
+              <span class="nav-item1">Пәндер тізімі</span>
+            </a></li>
+
+              {% elif user.is_student == True  %}
+
+            <li><a href="{% url 'student_sabak' %}" class="{% if request.path == '/student_sabak/' %}active1{% endif %}">
+              <i class="fas fa-tasks"></i>
+              <span class="nav-item1">Пәндер тізімі</span>
+            </a></li>
+
+              {% else %}
+              <li><a href="{% url 'register_student' %}" class="{% if request.path == '/register_student/' %}active1{% endif %}">
+              <i class="fas fa fa-user-plus"></i>
+              <span class="nav-item1 ">Студент тіркеу</span>
+            </a></li>
+            <li><a href="{% url 'register_teacher' %}" class="{% if request.path == '/register_teacher/' %}active1{% endif %}">
+              <i class="fas fa fa-user-plus"></i>
+              <span class="nav-item1">Оқытушыны тіркеу</span>
+            </a></li>
+            <li><a href="{% url 'sabak_top' %}" class="{% if request.path == '/sabak_top/' %}active1{% endif %}">
+              <i class="fas fa fa-user-plus"></i>
+              <span class="nav-item1 ">Сабақ тіркеу</span>
+            </a></li>
+                <li><a href="{% url 'kurator_top' %}" class="{% if request.path == '/kurator_top/' %}active1{% endif %}">
+              <i class="fas fa fa-user-plus"></i>
+              <span class="nav-item1 ">Куратор тіркеу</span>
+            </a></li>
+              {% endif %}
+
+             {% if kurator.exists %}
+
+              <li><a href="{% url 'tobym' %}" class="{% if request.path == '/tobym/' %}active1{% endif %}">
+              <i class="fas fa-users"></i>
+              <span class="nav-item1">Менің тобым</span>
+            </a></li>
+
+              {% else %}
+              {% endif %}
+
+            <li><a href="{% url 'profile_update' %}" class="{% if request.path == '/profile_update/' %}active1{% endif %}">
+              <i class="fas fa-cog"></i>
+              <span class="nav-item1">Баптаулар</span>
+            </a></li>
+            <li><a href="{% url 'logout' %}" class=""  class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item1">Жүйеден шығу</span>
+            </a></li>
+          </ul>
+        </nav>
+
+        <section class="main1">
+
+        {% block main %}
+          <section class="main-course1">
+            <h1>Басты бет</h1>
+            <div class="course-box1">
+                <img class="img_mktu" src="{% static 'img/mkty.jpg' %}">
+            </div>
+          </section>
+            {% endblock main %}
+        </section>
+      </div>
+
+
+    </body>
+    </html></span>

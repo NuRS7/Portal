@@ -1,0 +1,83 @@
+
+
+
+
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+    body{
+        background: #dfe9f5;
+    }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #e3e3e3;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock link %}
+{% block main %}
+     <section class="main-course1">
+
+            <div class="course-box1">
+<div class="container form-container">
+    <h2 class="form-title"> Сабақ топ оқытушы</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_teacher">Оқытушы </label>
+            <select class="form-control" id="id_teacher" name="teacher">
+                <option value="">-----</option>
+                {% for t in teacher %}
+                    <option value="{{ t.id }}">{{ t.first_name }} {{ t.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_top">Топ</label>
+            <select class="form-control" id="id_top" name="toby">
+                <option value="">-----</option>
+                {% for t in top %}
+                    <option value="{{ t.id }}">{{ t.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_sabak">Сабақ</label>
+            <select class="form-control" id="id_sabak" name="sabak">
+                <option value="">-----</option>
+                {% for t in sabak %}
+                    <option value="{{ t.id }}">{{ t.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_sabak_turu">Сабақ түрі </label>
+            <select class="form-control" id="id_sabak_turu" name="sabak_turu">
+                <option value="">-----</option>
+                {% for t in sabak_turu %}
+                    <option value="{{ t.id }}">{{ t.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Тіркеу</button>
+    </form>
+</div>
+
+    </div>
+
+          </section>
+{% endblock main %}
+
+
+
+

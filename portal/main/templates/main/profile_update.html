@@ -1,0 +1,85 @@
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>    body{
+        background: #dfe9f5;
+    }</style>
+{% endblock link %}
+{% block main %}
+     <section class="main-course1">
+            <h2>Профильге мәліметтер толтыру </h2>
+            <div class="course-box1">
+
+
+
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" value="{{ form.email.value }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="telefon">Телефон номер</label>
+                    <input type="text" name="telefon" class="form-control" id="telefon" value="{{ form.telefon.value }}" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="addres1">Тұрақты мекен-жайы</label>
+                    <input type="text" name="addres1" class="form-control" id="addres1" value="{{ form.addres1.value }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="addres2">Қазіргі мекен-жайы</label>
+                    <input type="text" name="addres2" class="form-control" id="addres2" value="{{ form.addres2.value }}" required>
+                </div>
+            </div>
+            {% if user.is_student == True %}
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="ana">Анасының аты-жөні</label>
+                    <input type="text" name="ana" class="form-control" id="ana" value="{{ form.ana.value }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="ana_nomer">Анасының телефон номері</label>
+                    <input type="text" name="ana_nomer" class="form-control" id="ana_nomer" value="{{ form.ana_nomer.value }}" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="ake">Әкесінің аты-жөні </label>
+                    <input type="text" name="ake" class="form-control" id="ake" value="{{ form.ake.value }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="ake_nomer">Әкесінің телефон номері</label>
+                    <input type="text" name="ake_nomer" class="form-control" id="ake_nomer" value="{{ form.ake_nomer.value }}" required>
+                </div>
+            </div>
+            {% else %}
+
+            {% endif %}
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="about_me">Мен жайлы </label>
+                    <textarea name="about_me" class="form-control" id="about_me" required>{{ form.about_me.value }}</textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="img">Профиль сурет </label>
+                    <input type="file" name="img" class="form-control-file" id="img">
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Мәліметтерді сақтау </button>
+        </form>
+
+
+
+         <br>
+        <a href="{% url 'change_password' %}" class="btn btn-primary" type="submit">Құпиясөзді ауыстыру</a>
+    </div>
+
+          </section>
+{% endblock main %}

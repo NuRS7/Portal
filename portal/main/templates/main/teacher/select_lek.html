@@ -1,0 +1,153 @@
+
+
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+          body{
+        background: #dfe9f5;
+    }
+    .main-course1 {
+        padding: 20px 0;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            color: #555;
+        }
+        input, select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+    .table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+  .fl-table tr th {
+        color: #000;
+        background: #dfe9f5;
+    }
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+.student {
+   width: 100%;
+}
+</style>
+{% endblock link %}
+{% block main %}
+     <section class="main-course1">
+             <div class="container">
+
+                 {% if leks %}
+        <table class="fl-table">
+            <tr>
+                <th>Оқытушының аты-жөні</th>
+                <th>Апта</th>
+                <th>Лекция</th>
+                <th>Жүктелген күн</th>
+            </tr>
+            {% for lek in leks %}
+            <tr>
+                <td><a class="student" href="{% url 'user'  lek.teacher.id %}">{{ lek.teacher.first_name }} {{ lek.teacher.last_name }}</a></td>
+                <td>{{ lek.week }}</td>
+                <td><a class="student" href="{{ lek.lek.url }}">лекция жүктеу </a></td>
+                <td>{{ lek.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+            <p>лекция жоқ</p>
+    {% endif %}
+
+<br><br>
+<h3>Лекция қосу</h3>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="display:none;">
+            <label for="id_toby">Тобы:</label>
+                <select id="id_toby" name="group">
+                    {% for g in groups %}
+                        <option value="{{ g.id }}">{{ g.name }}</option>
+                    {% endfor %}
+                </select>
+
+            <label for="id_sabak">Сабақ:</label>
+                <select id="id_sabak" name="sabak">
+                    {% for g in sabaks %}
+                        <option value="{{ g.id }}">{{ g.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <label for="id_week">Апта:</label>
+                <select id="id_week" name="week">
+                    {% for g in week %}
+                        <option value="{{ g.id }}">{{ g.name }}</option>
+                    {% endfor %}
+                </select>
+
+            <label for="id_lek">Лекция файлы:</label>
+            <input type="file" class="form-control" id="id_lek" name="lek" required>
+
+
+            <button type="submit">Жалғастыру</button>
+        </form>
+    </div>
+          </section>
+{% endblock main %}
+
+
+
+

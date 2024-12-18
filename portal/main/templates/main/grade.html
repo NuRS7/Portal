@@ -1,0 +1,138 @@
+
+
+{% extends 'main/profile.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .back {
+            margin-top: 50px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .back:hover {
+            background-color: #0056b3;
+            transition: .3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+</style>
+{% endblock link %}
+{% block main %}
+     <section class="main-course1">
+             <div class="container">
+                       <h2>Бағалар тізімі</h2>
+
+    {% if grades %}
+        <table class="fl-table">
+ <thead>
+            <tr>
+                <th>Group</th>
+                <th>Student</th>
+                <th>Teacher</th>
+                <th>sabak</th>
+                <th>Week</th>  <!-- Апта нөмірін көрсету -->
+                <th>Grade</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grade in grades %}
+                <tr>
+                    <td>{{ grade.group.name }}</td>
+                    <td>{{ grade.student.get_full_name }}</td>
+                    <td>{{ grade.teacher.username }}</td>
+                    <td>{{ grade.sabak.name}}</td>
+                    <td>{{ grade.week }}</td>  <!-- Апта нөмірін көрсету -->
+                    <td>{{ grade.grade }}</td>
+                    <td>{{ grade.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        </table>
+    {% else %}
+        <p>Баға жоқ</p>
+    {% endif %}
+
+    <a class="back" href="{% url 'student_sabak' %}">Артқа қайту</a>
+             </div>
+          </section>
+{% endblock main %}
+
+
+
+
