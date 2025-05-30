@@ -6,8 +6,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import *
-from django.http import JsonResponse
-
+from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
+from openpyxl import Workbook
+from .models import Zhukteme
 
 def login_view(request):
     if request.method == 'POST':
@@ -241,14 +243,77 @@ def course_grades(request, course_id):
     return render(request, 'main/student/course_grades.html', {'grades': grades, 'course': course})
 
 
-
-
-
-
-
-
-
 def grade_list(request):
     grades = Grade.objects.all().order_by('group', 'student')
     return render(request, 'main/grade.html', {'grades': grades})
 
+def zhukteme_list(request):
+    zhuktemeler = Zhukteme.objects.all()
+    print("Zhukteme count:", zhuktemeler.count())
+    return render(request, 'main/zhukteme/zhukteme_list.html', {'zhuktemeler': zhuktemeler})
+
+@login_required
+def zhukteme_create(request):
+    if request.method == 'POST':
+        teacher_id = request.POST.get('teacher')
+        lectures = request.POST.get('lectures')
+        practices = request.POST.get('practices')
+        tests = request.POST.get('tests')
+        rate = request.POST.get('rate')
+        zhalaqy = request.POST.get('zhalaqy')
+
+        try:
+            teacher = CustomUser.objects.get(id=teacher_id, is_teacher=True)
+            Zhukteme.objects.create(
+                teacher=teacher,
+                lectures=lectures,
+                practices=practices,
+                tests=tests,
+                rate=rate,
+                zhalaqy=zhalaqy
+            )
+            messages.success(request, 'Жүктеме сәтті қосылды!')
+            return redirect('zhukteme_create')  # Или перенаправить на '/zhukteme/'
+        except Exception as e:
+            messages.error(request, f'Қате: {str(e)}')
+
+    teachers = CustomUser.objects.filter(is_teacher=True)
+    return render(request, 'main/admin/zhukteme_create.html', {'teachers': teachers})
+
+
+def zhukteme_export(request):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Жүктеме"
+
+    headers = ['Оқытушы', 'Лекциялар саны', 'Практикалар саны', 'Тестер', 'Мөлшерлеме (ставка)', 'Жалақы', 'Жалпы жүктеме', 'Түзетілген жүктеме']
+    ws.append(headers)
+
+    for obj in Zhukteme.objects.all():
+        ws.append([
+            obj.teacher.get_full_name(),
+            obj.lectures,
+            obj.practices,
+            obj.tests,
+            float(obj.rate),
+            obj.zhalaqy,
+            float(obj.total_load),
+            float(obj.adjusted_load),
+        ])
+
+    for col in ws.columns:
+        max_length = 0
+        column = col[0].column_letter
+        for cell in col:
+            try:
+                if len(str(cell.value)) > max_length:
+                    max_length = len(str(cell.value))
+            except:
+                pass
+        adjusted_width = (max_length + 2) * 1.2
+        ws.column_dimensions[column].width = adjusted_width
+
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=zhukteme_export.xlsx'
+    wb.save(response)
+    return response

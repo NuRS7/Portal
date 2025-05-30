@@ -4,11 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e8761ff-790f-4b79-a0af-40dbf0df3e38" name="Changes" comment="" />
+    <list default="true" id="2e8761ff-790f-4b79-a0af-40dbf0df3e38" name="Changes" comment="c">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/portal/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/main/templates/main/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/portal/main/templates/main/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/main/templates/main/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/portal/main/templates/main/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/main/templates/main/profile_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/portal/main/templates/main/profile_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/CFMGOXUVNUDN20052024000837.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/SRYILKVZBDRM20052024000843.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/UILNGPZFGKSN20052024000756.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1_aQi7hDU.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1_eb98eYv.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1_jT1YzLN.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1_jv9f7Wr.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1_l1mOMCb.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/media/documents/ZWKEPMGBIVAX17052024095836_1_olXI2wD.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/static/css/style-index1.css" beforeDir="false" afterPath="$PROJECT_DIR$/portal/static/css/style-index1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/static/css/style-login1.css" beforeDir="false" afterPath="$PROJECT_DIR$/portal/static/css/style-login1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/static/css/style-register.css" beforeDir="false" afterPath="$PROJECT_DIR$/portal/static/css/style-register.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -21,6 +46,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NuRS7&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NuRS7/Portal.git&quot;,
+    &quot;accountId&quot;: &quot;559e8133-186c-40f0-b288-ff5195e116f3&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/portal/static/css/style-index1.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/portal/static/css/style-login1.css" root0="FORCE_HIGHLIGHTING" />
@@ -37,18 +74,22 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.Portal.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.codeium.enabled": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Nurs/Documents/portall/Portal1/Portal",
+    "last_opened_file_path": "C:/Users/Nurs/Documents/django/pythonProject18",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -97,6 +138,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="portal.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -133,12 +175,37 @@
       <updated>1714547218511</updated>
       <workItem from="1734542703342" duration="4259000" />
       <workItem from="1734557892154" duration="485000" />
-      <workItem from="1734558401122" duration="93000" />
+      <workItem from="1734558401122" duration="225000" />
+      <workItem from="1734559055587" duration="20040000" />
+      <workItem from="1734745574481" duration="5518000" />
+      <workItem from="1735399600128" duration="2027000" />
+      <workItem from="1735583221612" duration="81000" />
     </task>
+    <task id="LOCAL-00001" summary="c">
+      <option name="closed" value="true" />
+      <created>1734558579485</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734558579486</updated>
+    </task>
+    <task id="LOCAL-00002" summary="c">
+      <option name="closed" value="true" />
+      <created>1734562770135</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734562770135</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="c" />
+    <option name="LAST_COMMIT_MESSAGE" value="c" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

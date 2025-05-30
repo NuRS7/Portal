@@ -23,19 +23,14 @@
                     {% endif %}
                     <span class="nav-item">{{ user.first_name }} {{ user.last_name }}</span>
                     <br>
-                    {% if user.is_student == True %}
-                        <p>студент</p>
-                    {% elif user.is_teacher == True %}
-                        <p>оқытушы</p>
-                    {% else %}
-                        <p>админ</p>
-                    {% endif %}
+
                 </a>
             </li>
 
             <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile/' %}active1{% endif %}" >
               <i class="fas fa-home"></i>
               <span class="nav-item1 ">Басты бет</span>
+
             </a></li>
 
               {% if user.is_teacher == True %}
@@ -65,10 +60,20 @@
               <i class="fas fa fa-user-plus"></i>
               <span class="nav-item1 ">Сабақ тіркеу</span>
             </a></li>
-                <li><a href="{% url 'kurator_top' %}" class="{% if request.path == '/kurator_top/' %}active1{% endif %}">
-              <i class="fas fa fa-user-plus"></i>
-              <span class="nav-item1 ">Куратор тіркеу</span>
+                                        <li><a href="{% url 'zhukteme_create' %}"
+                             class="{% if request.path == '/zhukteme_create/' %}active1{% endif %}">
+              <i class="fas fa-cog"></i>
+              <span class="nav-item1">Жүктемені қосу</span>
             </a></li>
+                                <li><a href="{% url 'zhukteme_list' %}"
+                             class="{% if request.path == '/zhukteme_list/' %}active1{% endif %}">
+              <i class="fas fa-cog"></i>
+              <span class="nav-item1">Жүктемелер</span>
+            </a></li>
+{#                <li><a href="{% url 'kurator_top' %}" class="{% if request.path == '/kurator_top/' %}active1{% endif %}">#}
+{#              <i class="fas fa fa-user-plus"></i>#}
+{#              <span class="nav-item1 ">Куратор тіркеу</span>#}
+{#            </a></li>#}
               {% endif %}
 
              {% if kurator.exists %}
@@ -85,6 +90,10 @@
               <i class="fas fa-cog"></i>
               <span class="nav-item1">Баптаулар</span>
             </a></li>
+
+
+
+
             <li><a href="{% url 'logout' %}" class=""  class="logout">
               <i class="fas fa-sign-out-alt"></i>
               <span class="nav-item1">Жүйеден шығу</span>
@@ -94,15 +103,164 @@
 
         <section class="main1">
 
-        {% block main %}
-          <section class="main-course1">
-            <h1>Басты бет</h1>
-            <div class="course-box1">
-                <img class="img_mktu" src="{% static 'img/mkty.jpg' %}">
-            </div>
-          </section>
-            {% endblock main %}
-        </section>
+    {% block main %}
+      <section class="main-course1">
+        <h1>Басты бет</h1>
+      </section>
+
+      <section class="faculties">
+  <h2>Факультеттер</h2>
+  <div class="faculty-blocks">
+    <div class="faculty-block faculty-engineering">
+      <a href="https://ayu.edu.kz/birimler/kz/4-muhendislik-fakultesi"> 
+        <h3>Инженерия</h3>
+      <p>Инженерлік инновациялар мен заманауи технологияларды меңгерудің бірегей мүмкіндіктері.</p></a>
+    </div>
+    <div class="faculty-block faculty-medicine">
+      <a href="https://ayu.edu.kz/birimler/kz/4-tip-fakultesi">
+        <h3>Медицина</h3>
+        <p>Кәсіби медициналық білім алудың жаңа стандарттары мен тәжірибелері.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-philology">
+      <a href="https://ayu.edu.kz/birimler/kz/4-filoloji-fakultesi">
+        <h3>Филология</h3>
+        <p>Тілдер әлеміне терең бойлап, әдебиет өнерін зерттеу мүмкіндіктері.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-theology">
+      <a href="https://ayu.edu.kz/birimler/kz/4-ilahiyat-fakultesi"> 
+        <h3>Теология</h3>
+        <p>Дінтану, философия және рухани ілімдердің үйлесімділігі.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-sport-art">
+      <a href="https://ayu.edu.kz/birimler/kz/4-spor-ve-sanat-fakultesi">
+        <h3>Спорт және өнер</h3>
+        <p>Шығармашылық әлеуетті арттыру және спорттық жетістіктерге жету мүмкіндіктері.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-natural-sciences">
+      <a href="https://ayu.edu.kz/birimler/kz/4-fen-bilimleri-fakultesi">
+        <h3>Жаратылыстану ғылымдары</h3>
+        <p>Табиғат сырларын зерттеу және ғылыми жаңалықтар ашу жолдары.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-economics-law">
+      <a href="https://ayu.edu.kz/birimler/kz/4-iktisadi-idari-bilimler-ve-hukuk-fakultesi">
+        <h3>Экономика, басқару және құқық</h3>
+        <p>Қаржы, заң және басқару саласындағы терең білім алу мүмкіндіктері.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-social-sciences">
+      <a href="https://ayu.edu.kz/birimler/kz/4-insan-ve-toplum-bilimler-fakultesi">
+        <h3>Әлеуметтік-гуманитарлық ғылымдар</h3>
+        <p>Адамзат пен қоғамның дамуындағы маңызды мәселелерді зерттеу.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-preparation">
+      <a href="https://ayu.edu.kz/birimler/kz/4-hazirlik-okulu">
+        <h3>Дайындық орталығы</h3>
+        <p>Болашаққа сенімді қадам жасауға қажетті білім мен дағдылар.</p>
+      </a>   
+    </div>
+    <div class="faculty-block faculty-dentistry">
+      <a href="https://ayu.edu.kz/birimler/kz/4-dis-hekimligi-fakultesi">
+        <h3>Стоматология</h3>
+        <p>Тіс емдеу және денсаулық сақтаудың заманауи әдістері.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-postgraduate-medicine">
+      <a href="https://ayu.edu.kz/birimler/kz/4-lisansustu-tip-egitimi-fakultesi">
+        <h3>Жоғарғы медициналық білімнен кейінгі білім беру факультеті</h3>
+        <p>Медицина саласында терең білім мен тәжірибеге жету мүмкіндігі.</p>
+      </a>
+    </div>
+    <div class="faculty-block faculty-programs">
+      <a href="https://ayu.edu.kz/kz/programlar/">
+        <h3>Бағдарламалар</h3>
+        <p>Әр түрлі бағыттарда кәсіби білім беру бағдарламаларының кең таңдауы.</p>
+      </a>
+    </div>
+  </div>
+      </section>
+    {% endblock main %}
+</section>
+<style>
+  .faculties {
+    margin: 40px 20px;
+    font-family: sans-serif;
+  }
+
+  .faculties h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #222;
+  }
+
+  .faculty-blocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .faculty-block {
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .faculty-block a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .faculty-block h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #000;
+  }
+
+  .faculty-block p {
+    font-size: 15px;
+    color: #444;
+  }
+
+  /* Фоновые цвета */
+  .faculty-engineering { background-color: #e6f7ff; }
+  .faculty-medicine { background-color: #fff0f6; }
+  .faculty-philology { background-color: #f9fbe7; }
+  .faculty-theology { background-color: #e8f5e9; }
+  .faculty-sport-art { background-color: #fce4ec; }
+  .faculty-natural-sciences { background-color: #ede7f6; }
+  .faculty-economics-law { background-color: #e0f7fa; }
+  .faculty-social-sciences { background-color: #f1f8e9; }
+  .faculty-preparation { background-color: #ffecb3; }
+  .faculty-dentistry { background-color: #f3e5f5; }
+  .faculty-postgraduate-medicine { background-color: #e3f2fd; }
+  .faculty-programs { background-color: #ffccbc; }
+
+  /* Hover эффекты */
+  .faculty-engineering:hover { background-color: #b3e5fc; transform: translateY(-5px); }
+  .faculty-medicine:hover { background-color: #f8bbd0; transform: translateY(-5px); }
+  .faculty-philology:hover { background-color: #dcedc8; transform: translateY(-5px); }
+  .faculty-theology:hover { background-color: #a5d6a7; transform: translateY(-5px); }
+  .faculty-sport-art:hover { background-color: #f48fb1; transform: translateY(-5px); }
+  .faculty-natural-sciences:hover { background-color: #b39ddb; transform: translateY(-5px); }
+  .faculty-economics-law:hover { background-color: #80deea; transform: translateY(-5px); }
+  .faculty-social-sciences:hover { background-color: #c5e1a5; transform: translateY(-5px); }
+  .faculty-preparation:hover { background-color: #ffe082; transform: translateY(-5px); }
+  .faculty-dentistry:hover { background-color: #ce93d8; transform: translateY(-5px); }
+  .faculty-postgraduate-medicine:hover { background-color: #90caf9; transform: translateY(-5px); }
+  .faculty-programs:hover { background-color: #ffab91; transform: translateY(-5px); }
+</style>
+
+
+
       </div>
 
 

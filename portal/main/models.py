@@ -39,6 +39,21 @@ class Kyzmet(models.Model):
 class CustomUser(AbstractUser):
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
+
+    rate = models.DecimalField(
+        max_digits=3,
+        decimal_places=2,
+        choices=[
+            (1.00, 'Толық'),
+            (0.50, '0.5'),
+            (0.25, '0.25')
+        ],
+        default=1.00,
+        blank=True,
+        null=True,
+        verbose_name='Ставка'
+    )
+
     img = models.ImageField('foto', upload_to="profile/", blank=True, null=True)
     data = models.DateField('tygan kyn', blank=True, null=True)
     about_me  = models.TextField('ozim jaily', blank=True, null=True)
@@ -129,4 +144,24 @@ class Grade(models.Model):
     date = models.DateField(auto_now=True,blank=True, null=True,)
 
 
+class Zhukteme(models.Model):
+    teacher = models.ForeignKey(CustomUser, on_delete=models.CASCADE, limit_choices_to={'is_teacher': True})
+    lectures = models.PositiveIntegerField(default=0)
+    practices = models.PositiveIntegerField(default=0)
+    tests = models.PositiveIntegerField(default=0)
+    rate =models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    zhalaqy = models.PositiveIntegerField(default=0)
+
+    @property
+    def total_load(self):
+        total=(self.lectures + self.practices + self.tests) * self.rate * self.zhalaqy
+        return total
+
+    @property
+    def adjusted_load(self):
+        if self.teacher.rate:
+            return self.total_load * self.teacher.rate 
+        return self.total_load
+    def __str__(self):
+        return f'{self.teacher.get_full_name()} - Жүктеме'
 
