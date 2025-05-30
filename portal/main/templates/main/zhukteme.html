@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>ФИО</th>
+    <th>Ставка</th>
+    <th>Лекции</th>
+    <th>Практики</th>
+    <th>Зачёты</th>
+    <th>Всего</th>
+    <th>С учётом ставки</th>
+  </tr>
+  {% for item in workloads %}
+  <tr>
+    <td>{{ item.teacher.get_full_name }}</td>
+    <td>{{ item.teacher.rate }}</td>
+    <td>{{ item.lectures }}</td>
+    <td>{{ item.practices }}</td>
+    <td>{{ item.tests }}</td>
+    <td>{{ item.total_load }}</td>
+    <td>{{ item.adjusted_load }}</td>
+  </tr>
+  {% endfor %}
+</table>

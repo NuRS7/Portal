@@ -1,133 +1,164 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
-*{
-  margin: 0;
-  padding: 0;
-  outline: none;
-  border: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-body{
-  background: #dfe9f5;
-}
-.container1{
-  display: flex;
-}
-.nav1{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  height: 100vh;
-  left: 0;
-  background: #fff;
-  width: 280px;
-  overflow: hidden;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-.logo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: -20px;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
 
-.logo img{
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-}
-.logo span{
-  font-weight: bold;
-  max-width: 150px;
-  font-size: 18px;
-  text-transform: uppercase;
-}
-a{
-  position: relative;
-  color: rgb(85, 83, 83);
-  font-size: 14px;
-  display: table;
-  width: 280px;
-  padding: 10px;
-}
-.nav1 ul li a{
-    color: rgb(0, 40, 255);
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
     text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-.nav1 .fas{
-  position: relative;
-  width: 70px;
-  height: 40px;
-  top: 14px;
-  font-size: 20px;
-  text-align: center;
+body {
+    background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+    color: #333;
 }
-.nav-item1{
-  position: relative;
-  top: 12px;
-  margin-left: 10px;
 
+.container1 {
+    display: flex;
 }
-a:hover{
-  background: #eee;
+
+/* Sidebar */
+.nav1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #1e88e5;
+    width: 260px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-.logout{
-  position: absolute;
-  bottom: 0;
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.logo img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.logo span {
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.nav1 ul {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav1 ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 15px;
+    color: #e3f2fd;
+    transition: background 0.3s ease;
+    border-radius: 8px;
+}
+
+.nav1 ul li a:hover {
+    background: #1565c0;
+}
+
+.nav1 .fas {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.nav-item1 {
+    flex: 1;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
 }
 
 /* Main Section */
-.main1{
-  width: 1200px;
-  padding: 20px;
-  margin-left: 300px;
-}
-.main-top{
-  display: flex;
-  width: 100%;
-}
-
-.main-course1{
-  margin-top:20px ;
-
-}
-.course-box1{
-  width: 100%;
-
-  padding: 10px 10px 30px 10px;
-  margin-top: 10px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-.course-box1 ul{
-  list-style: none;
-  display: flex;
-
-}
-.course-box1 ul li{
-  margin: 10px;
-  color: gray;
-  cursor: pointer;
-
-
-}
-.course-box1 ul .active1{
-  color: #000;
-  border-bottom: 1px solid #000;
+.main1 {
+    width: calc(100% - 260px);
+    padding: 30px;
+    margin-left: 260px;
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
 
-
-.active1{
-  background: #dfe9f5;
+.main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.img_mktu{
-    width: 1140px;
+.main-top h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+}
 
+.main-course1 {
+    margin-top: 20px;
+}
+
+.course-box1 {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-box1 h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course-box1 ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+
+.course-box1 ul li {
+    margin-right: 20px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.course-box1 ul li:hover {
+    color: #1e88e5;
+}
+
+.course-box1 ul .active1 {
+    color: #1e88e5;
+    border-bottom: 2px solid #1e88e5;
+    padding-bottom: 2px;
+}
+
+.img_mktu {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

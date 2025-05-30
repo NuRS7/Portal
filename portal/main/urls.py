@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import zhukteme_list, zhukteme_export
 
 urlpatterns = [
     path('', views.login_view, name='login'),
@@ -7,6 +8,8 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),
     path('user/<int:user_id>/', views.user, name='user'),
     path('profile_update/', views.profile_update, name='profile_update'),
+    path('zhukteme_create/', views.zhukteme_create, name='zhukteme_create'),
+    path('zhukteme/export/', zhukteme_export, name='zhukteme_export'),
     path('change_password/', views.change_password, name='change_password'),
 #ADMIN
     path('register_teacher/', views.register_teacher, name='register_teacher'),
@@ -29,5 +32,6 @@ urlpatterns = [
 
 #
     path('grade_list/', views.grade_list, name='grade_list'),
+    path('zhukteme/', zhukteme_list, name='zhukteme_list')
 ]
 
